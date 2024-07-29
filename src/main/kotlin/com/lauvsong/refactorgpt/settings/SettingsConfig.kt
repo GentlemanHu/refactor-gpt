@@ -13,17 +13,20 @@ class SettingsConfig : Configurable {
     override fun isModified(): Boolean =
         form.isModified ||
             (form.apiKey != state.apiKey) ||
-            (form.responseTimeout != state.responseTimeout)
+            (form.responseTimeout != state.responseTimeout) ||
+            (form.apiUrl != state.apiUrl)
 
     override fun apply() {
         state.apiKey = form.apiKey
         state.responseTimeout = form.responseTimeout
+        state.apiUrl = form.apiUrl
         form.apply()
     }
 
     override fun reset() {
         form.apiKey = state.apiKey
         form.responseTimeout = state.responseTimeout
+        form.apiUrl = state.apiUrl
     }
 
     override fun getDisplayName(): String {

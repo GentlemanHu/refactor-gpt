@@ -11,6 +11,7 @@ import com.intellij.openapi.components.service
 class SettingsState : PersistentStateComponent<SettingsState> {
     var apiKey: String = ""
     var responseTimeout: Int = 10
+    var apiUrl: String = "https://api.openai.com/"
 
     override fun getState(): SettingsState {
         return this
@@ -19,6 +20,7 @@ class SettingsState : PersistentStateComponent<SettingsState> {
     override fun loadState(state: SettingsState) {
         apiKey = state.apiKey
         responseTimeout = state.responseTimeout
+        apiUrl = state.apiUrl
     }
 
     fun isApiKeyNotExists(): Boolean = apiKey.isBlank()

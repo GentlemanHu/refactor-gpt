@@ -8,12 +8,14 @@ import javax.swing.JPanel
 
 class SettingsForm {
     private val apiKeyField = JBTextField()
-    private val responseTimeoutSpinner = JBIntSpinner(10, 1, 60)
+    private val apiUrlField = JBTextField()
+    private val responseTimeoutSpinner = JBIntSpinner(10, 1, 300)
     var isModified = false
 
     private val formPanel: JPanel = FormBuilder.createFormBuilder()
         .addLabeledComponent("ChatGPT API key:", apiKeyField)
-        .addLabeledComponent("Response timeout (1~60):", responseTimeoutSpinner)
+        .addLabeledComponent("OpenAI API Entry:",apiUrlField)
+        .addLabeledComponent("Response timeout (1~300):", responseTimeoutSpinner)
         .panel
 
     val panel = JPanel(BorderLayout())
@@ -29,6 +31,12 @@ class SettingsForm {
         get() = apiKeyField.text
         set(value) {
             apiKeyField.text = value
+        }
+
+    var apiUrl:String
+        get() = apiUrlField.text
+        set(value) {
+            apiUrlField.text = value
         }
 
     var responseTimeout: Int
