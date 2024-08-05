@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 
 object ChatGptApiClient {
 
-    private val BASE_URL = SettingsState.instance.apiUrl  //"https://api.openai.com/" // 여기에 적절한 API 기본 URL을 입력하세요.
+    private val BASE_URL get() = SettingsState.instance.apiUrl  //"https://api.openai.com/" // 여기에 적절한 API 기본 URL을 입력하세요.
 
     fun getClient(): Retrofit =
         Retrofit.Builder()
