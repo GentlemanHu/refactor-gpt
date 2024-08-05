@@ -38,7 +38,7 @@ class ChatGptService(
         }
 
         val body = response.body()
-            ?: throw ChatGptFetchFailureException("OpenAI's response body is null.-${response.body()?.string()}--${response.errorBody()?.string()}---")
+            ?: throw ChatGptFetchFailureException("OpenAI's response body is null.-${response.body()}--${response.errorBody()?.string()}---")
 
         if (response.isSuccessful.not()) {
             throw ChatGptFetchFailureException("${response.errorBody()?.string()}")
